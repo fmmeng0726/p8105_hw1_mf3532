@@ -1,0 +1,101 @@
+---
+title: "P8105_HW1"
+author: "Meng Fang"
+date: '2022-09-19'
+output: github_document
+---
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+## Problem 1
+
+### Load `penguins`
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+### Short Description of Dataset
+
+- Names/Values of Important Variables
+
+```{r}
+names(penguins)
+```
+
+We can see that there are 8 variables in this dataset describing penguins, including: species, island, bill length(mm), bill depth(mm), flipper length(mm), body mass(grams), sex and year.
+
+- Size of Dataset
+
+```{r}
+nrow(penguins)
+ncol(penguins)
+```
+
+This dataset has 344 rows and 8 columns.
+
+- Mean of flipper length
+
+```{r}
+mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+By dropping 1 unknown flipper length in the datasetm we get that the mean flipper length is about 200.9mm.
+
+### Scatterplot of Flipper Length vs Bill Length
+
+```{r}
+ggp <- penguins %>%
+  ggplot() +
+  geom_point(mapping = aes(x = bill_length_mm, y = flipper_length_mm, color = species), na.rm = TRUE)
+
+ggp
+```
+
+```{r}
+#save scatterplot
+ggsave(filename = "scatterplot_penguin.pdf", plot = ggp, height = 4, width = 6)
+```
+
+## Problem 2
+
+```{r}
+df <- tibble(
+  var_num = rnorm(10, mean = 0, sd = 1),
+  var_logic = var_num > 0,
+  var_char  = c('a','b','c','d','e','f','g','h','j','k'),
+  var_factor = factor(c("low","middle","high","low","middle","high","low","middle","high","low"))
+)
+```
+
+### Take Mean of Each variable
+
+- mean of numeric variable
+
+```{r}
+#mean of numeric variable
+mean(df$var_num)
+#mean of logic variable
+mean(df$var_logic)
+#mean of character variable
+mean(df$var_char)
+#mean of factor variable
+mean(df$var_factor)
+```
+
+Shown above, we can take means of numerical and logical variables, and we cannot take means of character and factor variables.
+
+### Apply `as.numeric`
+
+```{r, results='hide'}
+#mean of logic variable
+mean(as.numeric(df$var_logic))
+#mean of character variable
+mean(as.numeric(df$var_char))
+#mean of factor variable
+mean(as.numeric(df$var_factor))
+```
+
+Now we see that we can get a mean from the factor variable and we still cannot get a mean from the character variable. We can only take means for numerical values. In this case the factor variable can be converted to numeric variable based on the levels of each observation, but for the character variable we are unable to make such conversion.
