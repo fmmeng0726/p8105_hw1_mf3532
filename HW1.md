@@ -24,8 +24,8 @@ names(penguins)
     ## [7] "sex"               "year"
 
 We can see that there are 8 variables in this dataset describing
-penguins, including: species, island, bill length(mm), bill depth(mm),
-flipper length(mm), body mass(grams), sex and year.
+penguins, including species, island, bill_length_mm, bill_depth_mm,
+flipper_length_mm, body_mass_g, sex, year.
 
 -   Size of Dataset
 
@@ -52,7 +52,7 @@ mean(penguins$flipper_length_mm, na.rm = TRUE)
     ## [1] 200.9152
 
 By dropping 1 unknown flipper length in the datasetm we get that the
-mean flipper length is about 200.9mm.
+mean flipper length is 200.9152047
 
 ### Scatterplot of Flipper Length vs Bill Length
 
@@ -91,14 +91,14 @@ df <- tibble(
 mean(df$var_num)
 ```
 
-    ## [1] -0.4261644
+    ## [1] -0.2937456
 
 ``` r
 #mean of logic variable
 mean(df$var_logic)
 ```
 
-    ## [1] 0.1
+    ## [1] 0.4
 
 ``` r
 #mean of character variable

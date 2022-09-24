@@ -25,7 +25,7 @@ data("penguins", package = "palmerpenguins")
 names(penguins)
 ```
 
-We can see that there are 8 variables in this dataset describing penguins, including: species, island, bill length(mm), bill depth(mm), flipper length(mm), body mass(grams), sex and year.
+We can see that there are 8 variables in this dataset describing penguins, including `r names(penguins)`.
 
 - Size of Dataset
 
@@ -34,7 +34,7 @@ nrow(penguins)
 ncol(penguins)
 ```
 
-This dataset has 344 rows and 8 columns.
+This dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
 - Mean of flipper length
 
@@ -42,7 +42,7 @@ This dataset has 344 rows and 8 columns.
 mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
-By dropping 1 unknown flipper length in the datasetm we get that the mean flipper length is about 200.9mm.
+By dropping 1 unknown flipper length in the datasetm we get that the mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`
 
 ### Scatterplot of Flipper Length vs Bill Length
 
